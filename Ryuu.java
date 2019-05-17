@@ -1,5 +1,7 @@
+import java.util.Random;
 public class Ryuu extends Monster
 {
+
     private String name;
     private String eigenschaft;
     private String merkmal;
@@ -8,18 +10,29 @@ public class Ryuu extends Monster
     private int istSchmutzig;
     private int istGelangweilt;
     private int istMüde;
+    private Random rand = new Random();
     public Ryuu(String name)
     {
         this.name = name;
         merkmal = "stolz";
-        int a = getrandomint(3);
-        if(a == 1)
+        int n = rand.nextInt(3);
+        if(n==1)
         {
-            eigenschaft = 
+            eigenschaft = "faul";
         }
-        else if()
+        else if(n==2)
+        {
+            eigenschaft = "hyperaktiv";
+        }
         else
+        {
+            eigenschaft = "verfressen";
+        }
         
+
+        
+
     }
+
 }
 
