@@ -6,17 +6,23 @@ public class Abschluss extends Listenelement
         
     }
     public Listenelement naechsterGeben()
-    {}
-    public Listenelement naechsterSetzen(Listenelement naechster)
-    {}
-    public void inhaltGeben()
-    {}
+    {
+        return this;
+    }    
+    public Raum inhaltGeben()
+    {
+        return null;
+    }
     public int anzahlDatenknotenGeben()
     {
         return 0;
     }
-    public void hintenAnfuegen(Raum bezeichnung)
-    {}
+    public Listenelement hintenAnfuegen(Raum bezeichnung)
+    {
+        Datenknoten neu = new Datenknoten(bezeichnung, this);
+        
+        return neu;
+    }
     public void listenDatenAusgeben()
     {}
 }

@@ -1,21 +1,32 @@
 public class Datenknoten extends Listenelement 
 {
-    public Datenknoten()
+    private Listenelement naechster;
+    private Raum inhalt;
+    public Datenknoten(Raum inhalt, Listenelement naechster)
     {
-        
+        this.naechster = naechster;
+        this.inhalt = inhalt;
     }
     public Listenelement naechsterGeben()
-    {}
-    public Listenelement naechsterSetzen(Listenelement naechster)
-    {}
-    public void inhaltGeben()
-    {}
+    {
+        return naechster;
+    }
+    public Raum inhaltGeben()
+    {
+        return inhalt;
+    }
     public int anzahlDatenknotenGeben()
     {
-        return 0;
+        return naechster.anzahlDatenknotenGeben() + 1;
     }
-    public void hintenAnfuegen(Raum bezeichnung)
-    {}
+    public Listenelement hintenAnfuegen(Raum bezeichnung)
+    {
+        naechster = naechster.hintenAnfuegen(bezeichnung);
+        return this;
+    }
     public void listenDatenAusgeben()
-    {}
+    {
+        //System.out.println(inhalt.nameGeben());
+        naechsterGeben();
+    }
 }
