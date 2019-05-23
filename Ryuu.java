@@ -1,15 +1,14 @@
-import java.util.Random;
+
+istimport java.util.Random;
 public class Ryuu extends Monster
 {
-
     private String name;
     private String eigenschaft;
     private String merkmal;
     private int erfahrung;
     private int istHungrig;
-    private int istSchmutzig;
-    private int istGelangweilt;
-    private int istMüde;
+    private boolean istSchmutzig;
+    private int istGlücklich;
     private Random rand = new Random();
     public Ryuu(String name)
     {
@@ -28,11 +27,21 @@ public class Ryuu extends Monster
         {
             eigenschaft = "verfressen";
         }
-        
+        erfahrung = 0;
+        istHungrig = 5;
+        istGlücklich = 5;
+        istSchmutzig = false; 
 
         
 
     }
+    
+    public int erfahrungAddieren(int Erfahrungswert)
+    {
+        return erfahrung = erfahrung + Erfahrungswert;
+    }
+    
+    
 
 }
 
