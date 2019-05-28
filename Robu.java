@@ -5,9 +5,9 @@ public class Robu extends Monster
     private String eigenschaft;
     private String merkmal;
     private int erfahrung;
-    private int istHungrig;
+    private int Hungerwert;
     private boolean istSchmutzig;
-    private int istGlücklich;
+    private int Freudenwert;
     private Random rand = new Random();
     public Robu(String name)
     {
@@ -27,8 +27,8 @@ public class Robu extends Monster
             eigenschaft = "verfressen";
         }
         erfahrung = 0;
-        istHungrig = 5;
-        istGlücklich = 5;
+        Hungerwert = 5;
+        Freudenwert = 5;
         istSchmutzig = false; 
 
     }
@@ -48,6 +48,11 @@ public class Robu extends Monster
         System.out.print("merkmal: "+merkmal);
         System.out.print("Erfahrungspunkte: "+erfahrung);
     }
+    
+        public int erfahrungGeben()
+    {
+        return erfahrung;
+    }
 
     public String nameGeben()
     {
@@ -62,6 +67,24 @@ public class Robu extends Monster
     public String merkmalGeben()
     {
         return merkmal;
+    }
+    public void HungerwertSetzen(int Nährungswert)
+    {
+        Hungerwert = Hungerwert + Nährungswert;
+        if(Hungerwert > 5)
+        {
+            Hungerwert = 5;
+        }
+        
+    }
+    public void FreudenwertSetzen(int Freude)
+    {
+        Freudenwert = Freudenwert + Freude;
+        if(Freudenwert > 5)
+        {
+            Freudenwert = 5;
+        }
+        
     }
 
 }

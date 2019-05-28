@@ -16,4 +16,5 @@ public class Spielzimmer extends Raum
     {
         return bezeichnung;
     }
+    
 }

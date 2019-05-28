@@ -5,9 +5,9 @@ public class Ryuu extends Monster
     private String eigenschaft;
     private String merkmal;
     private int erfahrung;
-    private int istHungrig;
+    private int Hungerwert;
     private boolean istSchmutzig;
-    private int istGlücklich;
+    private int Freudenwert;
     private Random rand = new Random();
     public Ryuu(String name)
     {
@@ -27,8 +27,8 @@ public class Ryuu extends Monster
             eigenschaft = "verfressen";
         }
         erfahrung = 0;
-        istHungrig = 5;
-        istGlücklich = 5;
+        Hungerwert = 5;
+        Freudenwert = 5;
         istSchmutzig = false; 
 
         
@@ -52,6 +52,11 @@ public class Ryuu extends Monster
         System.out.print("Erfahrungspunkte: "+erfahrung);
     }
         
+    public int erfahrungGeben()
+    {
+        return erfahrung;
+    }
+
     public String nameGeben()
     {
         return name;
@@ -67,6 +72,32 @@ public class Ryuu extends Monster
         return merkmal;
     }
     
+    public boolean istSchmutzigGeben()
+    {return istSchmutzig;}
+    
+    public void istSchmutzigSetzen(boolean istSchmutzig)
+    {
+        this.istSchmutzig = istSchmutzig;
+    }
+    
+    public void HungerwertSetzen(int Nährungswert)
+    {
+        Hungerwert = Hungerwert + Nährungswert;
+        if(Hungerwert > 5)
+        {
+            Hungerwert = 5;
+        }
+        
+    }
+    public void FreudenwertSetzen(int Freude)
+    {
+        Freudenwert = Freudenwert + Freude;
+        if(Freudenwert > 5)
+        {
+            Freudenwert = 5;
+        }
+        
+    }
 
 }
 
