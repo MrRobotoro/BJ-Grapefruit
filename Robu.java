@@ -1,5 +1,5 @@
 import java.util.Random;
-public class Ryuu extends Monster
+public class Robu
 {
     private String name;
     private String eigenschaft;
@@ -9,14 +9,14 @@ public class Ryuu extends Monster
     private boolean istSchmutzig;
     private int istGlücklich;
     private Random rand = new Random();
-    public Ryuu(String name)
+    public Robu(String name)
     {
         this.name = name;
-        merkmal = "stolz";
+        merkmal = "verspielt";
         int n = rand.nextInt(3);
         if(n==1)
         {
-            eigenschaft = "faul";
+            eigenschaft = "verspielt";
         }
         else if(n==2)
         {
@@ -31,19 +31,16 @@ public class Ryuu extends Monster
         istGlücklich = 5;
         istSchmutzig = false; 
 
-        
-
     }
-    
     public int erfahrungAddieren(int Erfahrungswert)
     {
         return erfahrung = erfahrung + Erfahrungswert;
     }
-    
+
     public void speichern()
     {
     }
-    
+
     public void datenAusgeben()
     {
         System.out.print("name: "+name);
@@ -51,22 +48,21 @@ public class Ryuu extends Monster
         System.out.print("merkmal: "+merkmal);
         System.out.print("EP: "+erfahrung);
     }
-        
+
     public String nameGeben()
     {
         return name;
     }
-    
+
     public String eigenschaftGeben()
     {
         return eigenschaft;
     }
-    
+
     public String merkmalGeben()
     {
         return merkmal;
     }
-    
 
 }
 
