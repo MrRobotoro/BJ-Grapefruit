@@ -1,5 +1,5 @@
 import java.util.Random;
-public class Robu
+public class Robu extends Monster
 {
     private String name;
     private String eigenschaft;
@@ -16,7 +16,7 @@ public class Robu
         int n = rand.nextInt(3);
         if(n==1)
         {
-            eigenschaft = "verspielt";
+            eigenschaft = "faul";
         }
         else if(n==2)
         {
@@ -46,7 +46,7 @@ public class Robu
         System.out.print("name: "+name);
         System.out.print("eigenschaft: "+eigenschaft);
         System.out.print("merkmal: "+merkmal);
-        System.out.print("EP: "+erfahrung);
+        System.out.print("Erfahrungspunkte: "+erfahrung);
     }
 
     public String nameGeben()

@@ -49,7 +49,7 @@ public class Ryuu extends Monster
         System.out.print("name: "+name);
         System.out.print("eigenschaft: "+eigenschaft);
         System.out.print("merkmal: "+merkmal);
-        System.out.print("EP: "+erfahrung);
+        System.out.print("Erfahrungspunkte: "+erfahrung);
     }
         
     public String nameGeben()
