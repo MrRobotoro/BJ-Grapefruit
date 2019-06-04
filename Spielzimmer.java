@@ -12,7 +12,7 @@ public class Spielzimmer extends Raum
         System.out.println(bezeichnung);
     }
     
-    public Object datenwertGeben()
+    public String datenwertGeben()
     {
         return bezeichnung;
     }
