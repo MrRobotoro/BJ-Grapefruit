@@ -32,6 +32,7 @@ public class Robu extends Monster
         istSchmutzig = false; 
 
     }
+
     public int erfahrungAddieren(int Erfahrungswert)
     {
         return erfahrung = erfahrung + Erfahrungswert;

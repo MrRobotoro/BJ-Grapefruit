@@ -35,6 +35,7 @@ public class Ryuu extends Monster
 
     }
     
+    
     public int erfahrungAddieren(int Erfahrungswert)
     {
         return erfahrung = erfahrung + Erfahrungswert;
