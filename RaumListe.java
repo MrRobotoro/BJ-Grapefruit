@@ -21,4 +21,9 @@ public class RaumListe
       System.out.print("----");         
   }
   
+  public void RaumlisteAusgeben()
+  {
+      erster.listenDatenAusgeben();
+  }
+  
 }

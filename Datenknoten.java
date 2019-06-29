@@ -26,7 +26,7 @@ public class Datenknoten extends Listenelement
     }
     public void listenDatenAusgeben()
     {
-        //System.out.println(inhalt.nameGeben());
-        naechsterGeben();
+        System.out.println(inhalt.datenwertGeben());
+        naechsterGeben().listenDatenAusgeben();
     }
 }

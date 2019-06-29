@@ -1,34 +1,88 @@
 
-public class Datenknoten2 extends Listenelement2
+public class Datenknoten2 extends Baumelement
 {
-    private Listenelement2 naechster;
-    private Item inhalt;
-    public Datenknoten2(Item inhalt, Listenelement2 naechster)
+    private Baumelement naechsterL;
+    private Baumelement naechsterR;
+    private Nahrung inhalt;
+     public Datenknoten2(Nahrung inhalt, Baumelement naechsterL, Baumelement naechsterR)
     {
-        this.naechster = naechster;
         this.inhalt = inhalt;
+        this.naechsterL = naechsterL;
+        this.naechsterR = naechsterR;
     }
-    public Listenelement2 naechsterGeben()
+    
+    public int anzahlDatenknotenGeben()
     {
-        return naechster;
+        return 1 + naechsterL.anzahlDatenknotenGeben() + naechsterR.anzahlDatenknotenGeben();
     }
-    public Item inhaltGeben()
+    
+    public Nahrung inhaltGeben()
     {
         return inhalt;
     }
-    public int anzahlDatenknotenGeben()
+    
+    public Baumelement naechsterLGeben()
     {
-        return naechster.anzahlDatenknotenGeben() + 1;
+        return naechsterL;
     }
-    public Listenelement2 hintenAnfuegen(Item bezeichnung)
+    
+    public Baumelement naechsterRGeben()
     {
-        naechster = naechster.hintenAnfuegen(bezeichnung);
+        return naechsterR;
+    }
+    
+    public void PreOrderAusgabe()
+    {
+        inhalt.datenAusgeben();
+        naechsterL.PreOrderAusgabe();
+        naechsterR.PreOrderAusgabe();
+        
+        
+    }
+    public void InOrderAusgabe()
+    {
+        naechsterL.InOrderAusgabe();
+        inhalt.datenAusgeben();
+        naechsterR.InOrderAusgabe();
+    }
+    public void PostOrderAusgabe()
+    {
+        naechsterL.PostOrderAusgabe();
+        naechsterR.PostOrderAusgabe();
+        inhalt.datenAusgeben();
+    }
+    
+    public Baumelement einfuegen(Nahrung d)
+    {
+        if(d.istKleiner(inhalt))
+        {
+            naechsterL = naechsterL.einfuegen(d);
+        }
+        else
+        {
+            naechsterR = naechsterR.einfuegen(d);
+        }
         return this;
     }
-    public void listenDatenAusgeben()
+    public Nahrung suche(Nahrung d)
     {
-        //System.out.println(inhalt.nameGeben());
-        naechsterGeben();
+        if(d.istGleich(inhalt) == true)
+        {
+            return inhalt;         
+        }
+        else
+        {
+            if(d.istKleiner(inhalt)==true)
+            {
+                return naechsterL.suche(d);
+                
+            }
+            else
+            {
+                return naechsterR.suche(d);
+            }
+        }
+        
     }
-
+ 
 }
