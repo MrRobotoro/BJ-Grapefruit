@@ -49,8 +49,8 @@ public class Robu extends Monster
         System.out.print("merkmal: "+merkmal);
         System.out.print("Erfahrungspunkte: "+erfahrung);
     }
-    
-        public int erfahrungGeben()
+
+    public int erfahrungGeben()
     {
         return erfahrung;
     }
@@ -69,6 +69,15 @@ public class Robu extends Monster
     {
         return merkmal;
     }
+
+    public boolean istSchmutzigGeben()
+    {return istSchmutzig;}
+
+    public void istSchmutzigSetzen(boolean istSchmutzig)
+    {
+        this.istSchmutzig = istSchmutzig;
+    }
+
     public void HungerwertSetzen(int Nährungswert)
     {
         Hungerwert = Hungerwert + Nährungswert;
@@ -76,8 +85,9 @@ public class Robu extends Monster
         {
             Hungerwert = 5;
         }
-        
+
     }
+
     public void FreudenwertSetzen(int Freude)
     {
         Freudenwert = Freudenwert + Freude;
@@ -85,7 +95,7 @@ public class Robu extends Monster
         {
             Freudenwert = 5;
         }
-        
+
     }
 
 }
