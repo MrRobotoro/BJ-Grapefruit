@@ -7,10 +7,12 @@ public class Spiel
     private String s_name;
     private String s_spezies;
     private Scanner s;
+    private Einstellungen einstellungen;
     public Spiel()
     {
         System.out.print('\f');
         s = new Scanner(System.in);
+        einstellungen = new Einstellungen("Easy");
         start();
     }
 
@@ -91,7 +93,8 @@ public class Spiel
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
-        return name+","+spezies;
+        String schwierigkeit = einstellungen.decodeSettings();
+        return name+","+spezies+","+schwierigkeit;
     }
     
     private void schluesselentschluesseln(String schlüssel)
@@ -99,9 +102,13 @@ public class Spiel
         String[] teile = schlüssel.split(",");
         String teil1 = teile[0];
         String teil2 = teile[1];
+        String teil3 = teile[2];
         String name = new String(Base64.getDecoder().decode(teil1.getBytes()));
         String spezies = new String(Base64.getDecoder().decode(teil2.getBytes()));
+        String schwierigkeit = new String(Base64.getDecoder().decode(teil3.getBytes()));
+        
         s_name = name;
         s_spezies = spezies;
+        einstellungen.schwierigkeitsetup(schwierigkeit);
     }
 }
