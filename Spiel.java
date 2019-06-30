@@ -1,4 +1,5 @@
 import java.util.*;
+//VGVzdA,Unl1dQ,TWVkaXVt
 public class Spiel
 {
     private RaumListe RListe;
@@ -183,7 +184,8 @@ public class Spiel
     public void füttern()
     { 
         Scanner s = new Scanner(System.in);
-
+        this.Mst = Mst;
+        
         if( Mst.istSchmutzigGeben() == true)
         {
             System.out.println( Mst.nameGeben()+" ist dreckig! Wasch es bevor sie es füttern!");
@@ -200,7 +202,7 @@ public class Spiel
         }
 
         Mst.erfahrungAddieren(1);
-        System.out.println("Hungerlevel ist nun auf "+HW);
+        System.out.println("Hungmsterlevel ist nun auf "+HW);
         System.out.println("----");
 
     }
@@ -256,6 +258,14 @@ public class Spiel
 
         s_name = name;
         s_spezies = spezies;
+        if(spezies.equals("Ryuu"))
+        {
+            Mst = new Ryuu(name);
+        }
+        else
+        {
+            Mst = new Robu(name);
+        }
         einstellungen.schwierigkeitsetup(schwierigkeit);
     }
 

@@ -9,9 +9,12 @@ public class Ryuu extends Misuta
     private boolean istSchmutzig;
     private boolean sterblich;
     private int Freudenwert;
+    private Nahrungsliste Nahrungsliste;
     private Random rand = new Random();
+    
     public Ryuu(String name)
     {
+        Nahrungsliste = new Nahrungsliste();
         this.name = name;
         merkmal = "stolz";
         int n = rand.nextInt(3);
@@ -156,14 +159,13 @@ public class Ryuu extends Misuta
 
     public int HungerwertSetzen(Nahrung a)
     {
-        Hungerwert = Hungerwert + a.nährwertGeben();
-        if(Hungerwert > 5)
+        Nahrung test = Nahrungsliste.EssenSuchen();
+        int hungerwert = test.nährwertGeben();
+        if(hungerwert > 5)
         {
             return Hungerwert = 5;
         }
-        return Hungerwert;
-        
-
+        return hungerwert;
     }
 
     public int HungerwertGeben()
