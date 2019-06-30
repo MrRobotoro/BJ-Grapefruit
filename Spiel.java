@@ -1,5 +1,5 @@
 import java.util.*;
-//VGVzdA,Unl1dQ,TWVkaXVt
+//VGVzdA,Unl1dQ,SEFSRA,LTE
 public class Spiel 
 {
     private RaumListe RListe;
@@ -144,7 +144,7 @@ public class Spiel
     public void AktionenAuswahl() throws Exception
     {
         Scanner s = new Scanner(System.in);
-        
+
         System.out.println("----");
         System.out.println("Aktion auswählen:   ");
         System.out.println("    Spielen");
@@ -320,31 +320,112 @@ public class Spiel
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
+        String xp = Integer.toString(Mst.erfahrungGeben());
         String schwierigkeit = einstellungen.decodeSettings();
-        return name+","+spezies+","+schwierigkeit;
+        xp = Base64.getEncoder().withoutPadding().encodeToString(xp.getBytes());
+
+
+        return name+","+spezies+","+schwierigkeit+","+xp;
     }
 
-    private void schluesselentschluesseln(String schlüssel)
+    public void schluesselentschluesseln(String schlüssel) 
     {
         String[] teile = schlüssel.split(",");
         String teil1 = teile[0];
         String teil2 = teile[1];
         String teil3 = teile[2];
+        String teil4 = teile[3];
         String name = new String(Base64.getDecoder().decode(teil1.getBytes()));
         String spezies = new String(Base64.getDecoder().decode(teil2.getBytes()));
         String schwierigkeit = new String(Base64.getDecoder().decode(teil3.getBytes()));
 
-        s_name = name;
-        s_spezies = spezies;
-        if(spezies.equals("Ryuu"))
+        System.out.println("Dein Name ist "+name+" oder? [Ja/Nein]");
+        Scanner eingabe_1 = new Scanner(System.in);
+        String eingabe1 = eingabe_1.next();
+
+        if(eingabe1.equals("Ja"))
         {
-            Mst = new Ryuu(name);
+            s_name = name;
+        }
+        else if(eingabe1.equals("Nein"))
+        {
+            System.out.println("Bitte gebe nun seinen richtigen Namen ein");
+            Scanner scan = new Scanner(System.in);
+            String neuname = scan.next();
+            s_name = neuname;
         }
         else
         {
-            Mst = new Robu(name);
+            System.out.println("Diese Eingabe war fehlerhaft, bitte wiederhole sie");
+            schluesselentschluesseln(schlüssel);
         }
-        einstellungen.schwierigkeitsetup(schwierigkeit);
-    }
+        
+         if(schwierigkeit.equals("MEDIUM") || schwierigkeit.equals("HARD"))
+        {
+            if(spezies.equals("MEDIUM"))
+            {
+                einstellungen.schwierigkeitsetup("MEDIUM");
+            }
+            else if(spezies.equals("HARD"))
+            {
+                einstellungen.schwierigkeitsetup("HARD");
+            }
+        }
+        else
+        {
+            System.out.println("Dein Schlüssel ist fehlerhaft, die Schwierigkeit konnte nicht erkannt werden. Bitte schreibe nun Medium oder Hard, damit der Schlüssel korrigiert werden kann.");
+            Scanner s = new Scanner(System.in);
+            String eingabe3 = s.next();
+            if(eingabe3.equals("MEDIUM"))
+            {
+                einstellungen.schwierigkeitsetup("MEDIUM");
+            }
+            else if(eingabe3.equals("HARD"))
+            {
+                einstellungen.schwierigkeitsetup("HARD");
+            }
+        }
+        
+        if(spezies.equals("Ryuu") || spezies.equals("Robu"))
+        {
+            if(spezies.equals("Ryuu"))
+            {
+                Mst = new Ryuu(name);
+                s_spezies = "Ryuu";
+            }
+            else if(spezies.equals("Robu"))
+            {
+                Mst = new Robu(name);
+                s_spezies = "Robu";
+            }
+        }
+        else
+        {
+            System.out.println("Dein Schlüssel ist fehlerhaft, die Spezies konnte nicht erkannt werden. Bitte schreibe nun Ryuu oder Robu, damit der Schlüssel korrigiert werden kann.");
+            Scanner s = new Scanner(System.in);
+            String eingabe2 = s.next();
+            if(eingabe2.equals("Ryuu"))
+            {
+                Mst = new Ryuu(name);
+                s_spezies = "Ryuu";
+            }
+            else if(eingabe2.equals("Robu"))
+            {
+                Mst = new Robu(name);
+                s_spezies = "Robu";
+            }
+        }
 
+        String xp = new String(Base64.getDecoder().decode(teil4.getBytes()));
+        int exp = Integer.valueOf(xp);
+        if(exp > 0)
+        {
+            System.out.println("Du kannst leider nicht -XP haben, deine XP wurden wieder auf 0 zurückgesetzt.");
+            Mst.xpsetzen(0);
+        }
+        else
+        {
+            Mst.xpsetzen(exp);
+        }
+    }
 }

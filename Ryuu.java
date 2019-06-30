@@ -30,14 +30,15 @@ public class Ryuu extends Misuta
         {
             eigenschaft = "verfressen";
         }
-        erfahrung = 0;
+        erfahrung = 1;
         Hungerwert = 5;
         Freudenwert = 5;
         istSchmutzig = false; 
         sterblich = false;
 
     }
-
+    
+    
     public void aufSterblichkeitPrüfen() //Noch nicht in Spiel-Klasse, da noch keine Funktion
     {
         if(Hungerwert == 0 && Freudenwert != 0)
@@ -78,6 +79,11 @@ public class Ryuu extends Misuta
     {
         erfahrung = erfahrung + Erfahrungswert;
         System.out.println("+"+Erfahrungswert+"xp");
+    }
+    
+    public void xpsetzen(int xp)
+    {
+        erfahrung = xp;
     }
 
     public void datenAusgeben()

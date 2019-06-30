@@ -27,18 +27,23 @@ public class Robu extends Misuta
         {
             eigenschaft = "verfressen";
         }
-        erfahrung = 0;
+        erfahrung = 1;
         Hungerwert = 5;
         Freudenwert = 5;
         istSchmutzig = false; 
         sterblich =false;
 
     }
-
+    
     public void erfahrungAddieren(int Erfahrungswert)
     {
         erfahrung = erfahrung + Erfahrungswert;
         System.out.println("+"+Erfahrungswert+"xp");
+    }
+    
+    public void xpsetzen(int xp)
+    {
+        erfahrung = xp;
     }
 
     public void aufSterblichkeitPrüfen()

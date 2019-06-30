@@ -12,4 +12,6 @@ public abstract class Misuta
     public abstract void istSchmutzigSetzen(boolean a);
     public abstract void aufSterblichkeitPrüfen();
     public abstract void Hungerbekommen(int a);
+    public abstract int erfahrungGeben();
+    public abstract void xpsetzen(int xp);
 }
