@@ -19,6 +19,17 @@ public class Datenknoten extends Listenelement
     {
         return naechster.anzahlDatenknotenGeben() + 1;
     }
+      public Raum RaumGeben(String name)
+    {
+      if(name.equals(inhaltGeben().datenwertGeben()))
+      {
+          return inhalt;
+      }
+      else
+      {         
+          return naechster.RaumGeben(name);
+      }
+    }
     public Listenelement hintenAnfuegen(Raum bezeichnung)
     {
         naechster = naechster.hintenAnfuegen(bezeichnung);

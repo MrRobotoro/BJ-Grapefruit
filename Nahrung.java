@@ -19,6 +19,11 @@ public class Nahrung
         return bezeichnung;
     }
     
+    public int AnzahlGeben()
+    {
+        return anzahl;
+    }
+    
     public int AnzahlMinusEins()
     {        
         return anzahl = anzahl -1;

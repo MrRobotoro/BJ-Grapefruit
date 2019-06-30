@@ -9,12 +9,15 @@ public class Abschluss2 extends Baumelement
 
         return neu;
     }
-        public Nahrung suche(Nahrung d)
+    
+    
+    public Nahrung suche(Nahrung d)
     {
-        System.out.println("Nicht vorhanden.'"+d+"'");
-        return null;
-        
+        return null;       
     }
+    
+    
+    
         public Baumelement einfuegen(Nahrung d)
     {
         Datenknoten2 neuk = new Datenknoten2(d,this,this);

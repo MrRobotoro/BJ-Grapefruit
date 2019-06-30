@@ -37,10 +37,10 @@ public class Robu extends Misuta
 
     public void erfahrungAddieren(int Erfahrungswert)
     {
-         erfahrung = erfahrung + Erfahrungswert;
-         System.out.println("+"+Erfahrungswert+"xp");
+        erfahrung = erfahrung + Erfahrungswert;
+        System.out.println("+"+Erfahrungswert+"xp");
     }
-    
+
     public void aufSterblichkeitPrüfen()
     {
 
@@ -78,12 +78,12 @@ public class Robu extends Misuta
         }
     }
 
-
     public void datenAusgeben()
     {
-        System.out.println("Name: "+name);
-        System.out.println("Besitzer: Du?");
-        System.out.println("Merkmal: "+merkmal);
+        System.out.println("Name:             "+name);
+        System.out.println("Besitzer:         Sie?");
+        System.out.println("Merkmal:          "+merkmal);
+        System.out.println("Art:              Robu");
         System.out.println("Erfahrungspunkte: "+erfahrung);
         System.out.println("----");
     }
@@ -112,7 +112,7 @@ public class Robu extends Misuta
     {
         return merkmal;
     }
-    
+
     public void istSchmutzigSetzen(boolean a)
     {
         istSchmutzig = a;
@@ -136,18 +136,19 @@ public class Robu extends Misuta
         }
 
     }
+
     public void Hungerbekommen(int a)
     {
         Hungerwert = Hungerwert - a;
         if(Hungerwert>0)
         {
-        System.out.println(nameGeben()+" hat wohl Hunger bekommen :P");
-    }
-    else 
-    {
-        System.out.println(nameGeben()+" stirbt vor Hunger, sie sollten ihn füttern");
-    }
-    
+            System.out.println(nameGeben()+" hat wohl Hunger bekommen :P");
+        }
+        else 
+        {
+            System.out.println(nameGeben()+" stirbt vor Hunger, sie sollten ihn füttern");
+        }
+
     }
 
     public void SauberSetzen()
@@ -156,7 +157,9 @@ public class Robu extends Misuta
         {
             istSchmutzig = false;
             System.out.println(nameGeben()+" ist jetzt nicht mehr dreckig.");
-            erfahrungAddieren(1);            
+            erfahrungAddieren(3);
+            System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ ♥");
+            FreudenwertSetzen(1);
         }
         else
         {
@@ -167,14 +170,25 @@ public class Robu extends Misuta
 
     public int HungerwertSetzen(Nahrung a)
     {
+        if(a == null)
+        {
+            System.out.println("Nicht Verfügbar!");
+            return 0;
+        }
+        if(a.AnzahlGeben() == 0)
+        {
+            System.out.println("Es scheint als hätten sie keine "+a.datenwertGeben()+" mehr.");
+            return 0;
+        }
         Hungerwert = Hungerwert + a.nährwertGeben();
+        int hungerwert = a.nährwertGeben();
         if(Hungerwert > 5)
         {
             Hungerwert = 5;
         }
         a.AnzahlMinusEins();
         return Hungerwert;
-        
+
     }
 
     public int HungerwertGeben()

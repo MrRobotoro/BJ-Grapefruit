@@ -83,9 +83,10 @@ public class Ryuu extends Misuta
     public void datenAusgeben()
     {
         System.out.println("Mitasu Info: ");
-        System.out.println("   Name: "+name);
-        System.out.println("   Besitzer: Du?");
-        System.out.println("   Art: "+merkmal);
+        System.out.println("   Name:             "+name);
+        System.out.println("   Besitzer:         Sie?");
+        System.out.println("   Merkmal:          "+merkmal);
+        System.out.println("   Art:              Robu");
         System.out.println("   Erfahrungspunkte: "+erfahrung);
         System.out.println("----");
     }
@@ -136,7 +137,6 @@ public class Ryuu extends Misuta
         {
             return true;
         }
-
     }
 
     public void Hungerbekommen(int a)
@@ -144,13 +144,8 @@ public class Ryuu extends Misuta
         Hungerwert = Hungerwert - a;
         if(Hungerwert>0)
         {
-            System.out.println(nameGeben()+" hat wohl Hunger bekommen :P");
+            System.out.println(nameGeben()+" hat wohl Hunger bekommen, sie sollten es füttern.");
         }
-        else 
-        {
-            System.out.println(nameGeben()+" stirbt vor Hunger, sie sollten ihn füttern");
-        }
-
     }
 
     public void SauberSetzen()
@@ -171,8 +166,17 @@ public class Ryuu extends Misuta
 
     public int HungerwertSetzen(Nahrung a)
     {
-        Nahrung test = Nahrungsliste.EssenSuchen();
-        int hungerwert = test.nährwertGeben();
+        if(a == null)
+        {
+            System.out.println("Nicht Verfügbar!");
+            return 0;
+        }
+        if(a.AnzahlGeben() == 0)
+        {
+            System.out.println("'"+a.datenwertGeben()+"'| Nicht mehr vorhanden.");
+            return 0;
+        }
+        int hungerwert = a.nährwertGeben();
         if(hungerwert > 5)
         {
             return Hungerwert = 5;

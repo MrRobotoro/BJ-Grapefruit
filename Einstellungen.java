@@ -14,21 +14,21 @@ public class Einstellungen
         
         System.out.println("Schwierigkeitsgrad wählen: ");
         System.out.println("   ");
-        System.out.println("Medium | Empfohlen für Spieler, die noch nebenbei ein Leben haben und Pflichten in der realen Welt erfüllen müssen");
-        System.out.println("Hard   | Sie wollen die beste, intensivste Erfahrung und sich für immer an ein virtuelles Tier binden? Dann nur zu!");
+        System.out.println("MEDIUM | Empfohlen für Spieler, die noch nebenbei ein Leben haben und Pflichten in der realen Welt erfüllen müssen");
+        System.out.println("HARD   | Sie wollen die beste, intensivste Erfahrung und sich für immer an ein virtuelles Tier binden? Dann nur zu!");
         System.out.println("        (Warnung: Bei diesem Schwierigkeitsgrad kann das Haustier bei Vernachlässigung sterben.)");
         
         String SG = s.next();
-        if(SG.equals("Medium"))
+        if(SG.equals("MEDIUM"))
         {
             System.out.println("----");
-            schwierigkeitsgrad = "Medium";
+            schwierigkeitsgrad = "MEDIUM";
             return false;
         }
-        else if(SG.equals("Hard"))
+        else if(SG.equals("HARD"))
         {
             System.out.println("----");
-            schwierigkeitsgrad = "Hard";
+            schwierigkeitsgrad = "HARD";
             return true;
         }
         else

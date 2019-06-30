@@ -4,7 +4,7 @@ public class Spiel
 {
     private RaumListe RListe;
     private Misuta Mst;
-    private Raum Standort;
+    private String Standort;
 
     private boolean Schwierigkeit;
     private String vgl;
@@ -21,24 +21,45 @@ public class Spiel
         RListe = new RaumListe();
         NListe = new Nahrungsliste();
         einstellungen = new Einstellungen();
+        Standort = RListe.RaumWahl("Spielzimmer").datenwertGeben();
 
         System.out.print('\f');
 
         s = new Scanner(System.in);
-        
+
         start();
-        
-        
+
     }
-   
+
+    public void Raumwechseln()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Sie befinden sich im "+Standort+".");
+        System.out.println("In welches Zimmer möchten sie wechseln?");
+        System.out.print("      ");RListe.RaumlisteAusgeben();
+        String R = s.next();
+        if(R.equals(Standort) == true)
+        {
+            System.out.println("Sie sind bereits im "+Standort+".");
+        }
+        else if(RListe.RaumWahl(R) == null)
+        {
+            System.out.println("Kein Raum mit dieser Bezeichnung.");
+        }
+        else
+        {
+            Standort = RListe.RaumWahl(R).datenwertGeben();
+        }
+    }
 
     public void start() throws Exception
     {
         String schluessel;
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Willkommen bei Project Grapefruit.");
-        System.out.println("Um fortzufahren, müssen wir wissen, ob du bereits einen Schlüssel besitzt. Wenn ja, dann schreibe bitte Ja, ansonsten Nein.");
+        System.out.println("Willkommen bei Project Grapefruit/Mitasu.");
+        System.out.println("Um fortzufahren, müssen wir wissen, ob du bereits einen Schlüssel besitzt."); 
+        System.out.println("Wenn ja, dann schreibe bitte Ja, ansonsten Nein.");
         String eingabe = s.next();
 
         if(eingabe.equals("Ja"))
@@ -55,9 +76,9 @@ public class Spiel
             Schwierigkeitsgrad_festlegen();
 
             System.out.println("Hallo! Herzlich Willkommen in der Welt der Misuta!");
-            
+
             Thread.sleep(1500);
-            
+
             System.out.println("Mein Name ist Ketchum! Man nennt mich den Misuta-Professor! Diese Welt wird von Wesen bewohnt, die man Misuta nennt!");
             System.out.println("Für manche Leute sind Misuta Haustiere, für andere Familienmitglieder. Ich selbst habe mein Hobby zum Beruf gemacht und studiere Misuta.");
             System.out.println("Ich habe mir einst die Aufgabe gemacht die Welt der Misuta zu erforschen. ");
@@ -65,19 +86,19 @@ public class Spiel
             System.out.println("Ich habe dir zwei Exemplare mitgebracht:");
 
             System.out.println("----");
-            Thread.sleep(4000);
+            Thread.sleep(7000);
 
             System.out.println("Ryuu: ");
             System.out.println("Die Flamme auf seiner Schwanzspitze zeigt seine Lebensenergie an.");
             System.out.println("Ist es gesund, leuchtet sie hell.");
             System.out.println("----");
-            Thread.sleep(2000);
+            Thread.sleep(3000);
 
             System.out.println("Robu:");
             System.out.println("Es liebt es zu spielen, besonders mit Wasser");
             System.out.println("----");
-            Thread.sleep(1500);
-            
+            Thread.sleep(2000);
+
             System.out.println("Wähle ein Misuta!");
 
             MisutaWählen();
@@ -123,48 +144,54 @@ public class Spiel
     public void AktionenAuswahl() throws Exception
     {
         Scanner s = new Scanner(System.in);
-        System.out.println("----");
-
-        System.out.println("Aktion auswählen:   ");
         
-        System.out.println("    spielen");
-        System.out.println("    füttern");
-        System.out.println("    waschen");
+        System.out.println("----");
+        System.out.println("Aktion auswählen:   ");
+        System.out.println("    Spielen");
+        System.out.println("    Füttern");
+        System.out.println("    Waschen");
+        System.out.println("    Raumauswahl");
         System.out.println("    Info");
-        System.out.println("    speichern");
+        System.out.println("    Speichern");
         System.out.println("----");
 
         String Eingabe = s.next();
 
-        if(Eingabe.equals("spielen"))
+        if(Eingabe.equals("Spielen"))
         {
             spielen();
-            Thread.sleep(1500);
+            Thread.sleep(1200);
             AktionenAuswahl();
-            
+
         }
-        else if(Eingabe.equals("füttern"))
+        else if(Eingabe.equals("Füttern"))
         {
             füttern();
-            Thread.sleep(1500);
+            Thread.sleep(1200);
             AktionenAuswahl();
         }
-        else if(Eingabe.equals("waschen"))
+        else if(Eingabe.equals("Waschen"))
         {
             waschen();
-            Thread.sleep(1500);
+            Thread.sleep(1200);
+            AktionenAuswahl();
+        }
+        else if(Eingabe.equals("Raumauswahl"))
+        {
+            Raumwechseln();
+            Thread.sleep(1200);
             AktionenAuswahl();
         }
         else if(Eingabe.equals("Info"))
         {
             MitasuInfo();
-            Thread.sleep(1500);
+            Thread.sleep(1200);
             AktionenAuswahl();
         }
-        else if(Eingabe.equals("speichern"))
+        else if(Eingabe.equals("Speichern"))
         {
             speichern();
-            
+
         }
         else
         {
@@ -204,33 +231,50 @@ public class Spiel
     }
 
     public void füttern()
-    { 
-        Scanner s = new Scanner(System.in);
-        this.Mst = Mst;
-
-        if( Mst.istSchmutzigGeben() == true)
+    {   
+        if(Mst.istSchmutzigGeben() == true)
         {
             System.out.println( Mst.nameGeben()+" ist dreckig! Wasch es bevor sie es füttern!");
             return;
         }
-
-        System.out.println("Was soll es essen?");
-        int HW = Mst.HungerwertSetzen(NListe.EssenSuchen());
-
-        if(Mst.RNG(0.3) == true && Mst.istSchmutzigGeben() == false)
+        else
         {
-            System.out.println("Oh Nein! "+Mst.nameGeben()+" ist dreckig geworden!");
-            Mst.istSchmutzigSetzen(true);
+            if(Standort.equals("Garten") == true)
+            {
+                System.out.println("Sie müssen im Haus sein um ihr Misuta zu füttern.");
+                return;
+            }
+            else
+            {
+                System.out.println("Was soll es essen?");
+                int HW = Mst.HungerwertSetzen(NListe.EssenSuchen());
+                if(HW == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    if(Mst.RNG(0.3) == true && Mst.istSchmutzigGeben() == false)
+                    {
+                        System.out.println("Oh Nein! "+Mst.nameGeben()+" ist dreckig geworden!");
+                        Mst.istSchmutzigSetzen(true);
+                    }
+
+                    Mst.erfahrungAddieren(1);
+                    System.out.println("Hungerlevel ist nun auf "+HW);
+                    System.out.println("----");
+                }
+            }
         }
-
-        Mst.erfahrungAddieren(1);
-        System.out.println("Hungerlevel ist nun auf "+HW);
-        System.out.println("----");
-
     }
 
     public void waschen()
     {
+        if(Standort.equals("Spielzimmer") == true)
+        {
+            System.out.println("Rohrbruch...Sie müssen ihr Misuta im Garten mit den Schlauch abspülen");
+            return;
+        }
         Mst.SauberSetzen();  
         System.out.println("----");
     }
@@ -246,6 +290,7 @@ public class Spiel
         else if(Mst.HungerwertGeben() <= 0)
         {
             System.out.println(Mst.nameGeben()+" hat Hunger! Füttern sie es bevor sie mit ihm spielen!");
+            return;
         }
         else if(Mst.RNG(0.42) == true && Mst.istSchmutzigGeben() == false)
         {

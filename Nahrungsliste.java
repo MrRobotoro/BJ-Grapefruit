@@ -21,8 +21,10 @@ public class Nahrungsliste
     
     public void InOrderAusgeben()
     {
-        wurzel.InOrderAusgabe();
+        System.out.print("    ");wurzel.InOrderAusgabe();
+        System.out.print("    ");
     }
+        
     
     public Nahrung EssenSuchen()
     {

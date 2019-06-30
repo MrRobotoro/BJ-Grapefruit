@@ -16,4 +16,10 @@ public class Garten extends Raum
     {
         return bezeichnung;
     }
+    
+    public boolean istGleich(String d)
+    {
+        String vgl = (String)d;
+        return bezeichnung.equals(vgl);
+    }
 }

@@ -1,37 +1,43 @@
-
+import java.util.Scanner;
 public class RaumListe
 {
-  private Listenelement erster;
-  
-  public RaumListe()
-  {
-      erster = new Abschluss();
-      
-      Raum Playroom = new Spielzimmer("Spielzimmer");
-      Raum Garden = new Garten("Garten");
-      
-      erster.hintenAnfuegen(Playroom);
-      erster.hintenAnfuegen(Garden);
-  }
-  
-  public Listenelement ersterGeben()
-  {
-      return erster;
+    private Listenelement wurzel;
+
+    public RaumListe()
+    {
+        Abschluss abschl = new Abschluss();
+
+        Raum Spielzimmer = new Spielzimmer("Spielzimmer");
+        Raum Garten = new Garten("Garten");
+
+        Datenknoten a,b;
+
+        a = new Datenknoten(Garten, abschl);
+        b = new Datenknoten(Spielzimmer, a);
+
+        wurzel = b;
+
     }
-  public void RaumAnzahlGeben()
-  {
-      int RaumANZ = erster.anzahlDatenknotenGeben();
-      System.out.println("Raumanzahl: "+RaumANZ);
-      System.out.print("----");         
-  }
-  
-  public void RaumlisteAusgeben()
-  {
-      erster.listenDatenAusgeben();
-  }
-  
-  public Raum RaumGeben()
-  {
-      return erster.naechsterGeben().inhaltGeben();
-  }
+
+    public Raum RaumWahl(String bezeichnung)
+    {
+        return wurzel.RaumGeben(bezeichnung);
+    }
+
+    public Listenelement wurzelGeben()
+    {
+        return wurzel;
+    }
+
+    public void RaumAnzahlGeben()
+    {
+        int RaumANZ = wurzel.anzahlDatenknotenGeben();
+        System.out.println("Raumanzahl: "+RaumANZ);
+    }
+
+    public void RaumlisteAusgeben()
+    {
+        wurzel.listenDatenAusgeben();
+    }
+
 }
