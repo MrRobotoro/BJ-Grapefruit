@@ -35,7 +35,8 @@ public class Spiel
         String schluessel;
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Willkommen bei Project Grapefruit. Um fortzufahren, müssen wir wissen, ob du bereits einen Schlüssel besitzt. Wenn ja, dann schreibe bitte Ja, ansonsten Nein.");
+        System.out.println("Willkommen bei Project Grapefruit.");
+        System.out.println("Um fortzufahren, müssen wir wissen, ob du bereits einen Schlüssel besitzt. Wenn ja, dann schreibe bitte Ja, ansonsten Nein.");
         String eingabe = s.next();
 
         if(eingabe.equals("Ja"))
@@ -114,7 +115,7 @@ public class Spiel
         System.out.println("    spielen");
         System.out.println("    füttern");
         System.out.println("    waschen");
-        System.out.println("    MitasuInfo");
+        System.out.println("    Info");
         System.out.println("    speichern");
         System.out.println("----");
 

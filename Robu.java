@@ -126,7 +126,7 @@ public class Robu extends Misuta
     public boolean RNG()
     {
         double x = Math.random();
-        if(x <= 0.55)
+        if(x <= 0.64)
         {
             return false;
         }
