@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Nahrungsliste
 {
     private Baumelement erster;
-
+    
     public Nahrungsliste()
     {
         erster = new Abschluss2();
@@ -30,7 +30,5 @@ public class Nahrungsliste
         Nahrung vgl = new Nahrung(1,bezeichnung,1);
         return erster.suche(vgl);
     }
-
-
 
 }

@@ -2,43 +2,51 @@ import java.util.*;
 public class Einstellungen
 {
     //WIP, nur erstellt, damit der Schlüssel generiert werden kann
-    private double wert1;
-    private double wert2;
-    private double wert3;
     private String schwierigkeitsgrad;
-    public Einstellungen(String schwierigkeitsgrad)
+    
+    public void Einstellungen()
     {
-        this.schwierigkeitsgrad = schwierigkeitsgrad;
-        if(schwierigkeitsgrad.equals("Easy"))
+    }
+    
+    protected boolean EinstellungenSetup()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        System.out.println("Schwierigkeitsgrad wählen: ");
+        System.out.println("   ");
+        System.out.println("Medium | Empfohlen für Spieler, die noch nebenbei ein Leben haben und Pflichten in der realen Welt erfüllen müssen");
+        System.out.println("Hard   | Sie wollen die beste, intensivste Erfahrung und sich für immer an ein virtuelles Tier binden? Dann nur zu!");
+        System.out.println("        (Warnung: Bei diesem Schwierigkeitsgrad kann das Haustier bei Vernachlässigung sterben.)");
+        
+        String SG = s.next();
+        if(SG.equals("Medium"))
         {
-            wert1 = 0.5;
-            wert2 = 0.5;
-            wert3 = 0.5;
+            System.out.println("----");
+            schwierigkeitsgrad = "Medium";
+            return false;
         }
-        else if(schwierigkeitsgrad.equals("Medium"))
+        else if(SG.equals("Hard"))
         {
-            wert1 = 1;
-            wert2 = 1;
-            wert3 = 1;
-        }
-        else if(schwierigkeitsgrad.equals("Hard"))
-        {
-            wert1 = 2;
-            wert2 = 2;
-            wert3 = 2;
+            System.out.println("----");
+            schwierigkeitsgrad = "Hard";
+            return true;
         }
         else
-        {System.out.println("Deine Eingabe konnte nicht bestimmt werden, bitte überprüfe es, das Setup wird neugestartet");}
+        {
+            System.out.println("Nicht verfügbare Schwierigkeit");
+            EinstellungenSetup();
+            return false;
+        }
     }  
-    
+
     protected String decodeSettings()
     {
         String speicher = schwierigkeitsgrad; 
         String b_schwierigkeitsgrad = Base64.getEncoder().withoutPadding().encodeToString(speicher.getBytes());
-        
+
         return b_schwierigkeitsgrad;
     }
-    
+
     protected void schwierigkeitsetup(String eingabe)
     {
         schwierigkeitsgrad = eingabe;
