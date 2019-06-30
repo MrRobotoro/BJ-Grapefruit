@@ -13,7 +13,7 @@ public class Spiel
     private String s_name;
     private String s_spezies;
     
-    private Einstellungen einstellungen;
+    
 
     public Spiel()
     {        
@@ -23,7 +23,6 @@ public class Spiel
         Scanner s = new Scanner(System.in);
 
         s = new Scanner(System.in);
-        einstellungen = new Einstellungen("Easy");
         start(); //wenn man den code eingibt startet trzdm normal
 
         RListe = new RaumListe();
@@ -144,7 +143,7 @@ public class Spiel
         }
         else if(Eingabe.equals("speichern"))
         {
-            speichern();
+            //speichern();
         }
         else
         {
@@ -255,20 +254,26 @@ public class Spiel
         Mst.erfahrungAddieren(2);
         System.out.println("----");
     }
-
-    public void speichern()
+    /**
+     * public void speichern()
     {
         System.out.println("Dein Spielstand wird nun gespeichert. Dazu wird dir ein Schlüssel ausgegeben, welchen du bitte auf deinem Rechner speicherst.");
         System.out.println(schluesselerstellen());
     }
+     */
+
     
-    private String schluesselerstellen()
+    
+    /**
+     * private String schluesselerstellen()
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
         String schwierigkeit = einstellungen.decodeSettings();
         return name+","+spezies+","+schwierigkeit;
     }
+     */
+    
     
     private void schluesselentschluesseln(String schlüssel)
     {
@@ -282,7 +287,7 @@ public class Spiel
         
         s_name = name;
         s_spezies = spezies;
-        einstellungen.schwierigkeitsetup(schwierigkeit);
+        //einstellungen.schwierigkeitsetup(schwierigkeit);
 
     }
 }
