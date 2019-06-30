@@ -229,14 +229,14 @@ public class Spiel
         System.out.println("----");
     }
 
-    public void speichern()
+    private void speichern()
     {
         System.out.println("Dein Spielstand wird nun gespeichert. Dazu wird dir ein Schlüssel ausgegeben, welchen du bitte auf deinem Rechner speicherst.");
         System.out.println(schluesselerstellen());
     }
 
 
-    public String schluesselerstellen()
+    private String schluesselerstellen()
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
