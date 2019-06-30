@@ -8,7 +8,8 @@ public abstract class Misuta
     public abstract boolean istSchmutzigGeben();
     public abstract void SauberSetzen();
     public abstract void erfahrungAddieren(int a);
-    public abstract boolean RNG();
+    public abstract boolean RNG(double P);
     public abstract void istSchmutzigSetzen(boolean a);
     public abstract void aufSterblichkeitPrüfen();
+    public abstract void Hungerbekommen(int a);
 }

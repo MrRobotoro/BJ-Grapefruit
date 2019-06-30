@@ -123,10 +123,10 @@ public class Robu extends Misuta
         return istSchmutzig;
     }
 
-    public boolean RNG()
+    public boolean RNG(double P)
     {
         double x = Math.random();
-        if(x <= 0.64)
+        if(x <= P)
         {
             return false;
         }
@@ -136,6 +136,19 @@ public class Robu extends Misuta
         }
 
     }
+    public void Hungerbekommen(int a)
+    {
+        Hungerwert = Hungerwert - a;
+        if(Hungerwert>0)
+        {
+        System.out.println(nameGeben()+" hat wohl Hunger bekommen :P");
+    }
+    else 
+    {
+        System.out.println(nameGeben()+" stirbt vor Hunger, sie sollten ihn füttern");
+    }
+    
+    }
 
     public void SauberSetzen()
     {
@@ -143,9 +156,7 @@ public class Robu extends Misuta
         {
             istSchmutzig = false;
             System.out.println(nameGeben()+" ist jetzt nicht mehr dreckig.");
-            erfahrungAddieren(1);
-            
-
+            erfahrungAddieren(1);            
         }
         else
         {
@@ -161,6 +172,7 @@ public class Robu extends Misuta
         {
             Hungerwert = 5;
         }
+        a.AnzahlMinusEins();
         return Hungerwert;
         
     }

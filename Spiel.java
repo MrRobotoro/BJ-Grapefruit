@@ -1,6 +1,6 @@
 import java.util.*;
 //VGVzdA,Unl1dQ,TWVkaXVt
-public class Spiel
+public class Spiel 
 {
     private RaumListe RListe;
     private Misuta Mst;
@@ -13,24 +13,26 @@ public class Spiel
     private String s_name;
     private String s_spezies;
 
-
     private Scanner s;
     private Einstellungen einstellungen;
 
-    public Spiel()
+    public Spiel() throws Exception
     {
         RListe = new RaumListe();
         NListe = new Nahrungsliste();
         einstellungen = new Einstellungen();
-        
+
         System.out.print('\f');
 
         s = new Scanner(System.in);
+        
         start();
+        
+        
     }
+   
 
-    
-    public void start()
+    public void start() throws Exception
     {
         String schluessel;
         Scanner s = new Scanner(System.in);
@@ -53,6 +55,9 @@ public class Spiel
             Schwierigkeitsgrad_festlegen();
 
             System.out.println("Hallo! Herzlich Willkommen in der Welt der Misuta!");
+            
+            Thread.sleep(1500);
+            
             System.out.println("Mein Name ist Ketchum! Man nennt mich den Misuta-Professor! Diese Welt wird von Wesen bewohnt, die man Misuta nennt!");
             System.out.println("Für manche Leute sind Misuta Haustiere, für andere Familienmitglieder. Ich selbst habe mein Hobby zum Beruf gemacht und studiere Misuta.");
             System.out.println("Ich habe mir einst die Aufgabe gemacht die Welt der Misuta zu erforschen. ");
@@ -60,15 +65,19 @@ public class Spiel
             System.out.println("Ich habe dir zwei Exemplare mitgebracht:");
 
             System.out.println("----");
+            Thread.sleep(4000);
 
             System.out.println("Ryuu: ");
             System.out.println("Die Flamme auf seiner Schwanzspitze zeigt seine Lebensenergie an.");
             System.out.println("Ist es gesund, leuchtet sie hell.");
             System.out.println("----");
+            Thread.sleep(2000);
 
             System.out.println("Robu:");
             System.out.println("Es liebt es zu spielen, besonders mit Wasser");
             System.out.println("----");
+            Thread.sleep(1500);
+            
             System.out.println("Wähle ein Misuta!");
 
             MisutaWählen();
@@ -76,6 +85,8 @@ public class Spiel
             if(vgl.equals("Ryuu"))
             {            
                 System.out.println("Glückwunsch, du hast ein Ryuu erhalten.");
+                Thread.sleep(1500);
+                System.out.println("----");
                 System.out.println("Wie soll es heißen? ");
                 String name = s.next();
 
@@ -88,6 +99,7 @@ public class Spiel
             else if(vgl.equals("Robu"))
             {            
                 System.out.println("Glückwunsch, du hast ein Robu erhalten.");
+                System.out.println("----");
                 System.out.println("Wie soll es heißen? ");
                 String name = s.next();
 
@@ -101,17 +113,20 @@ public class Spiel
         }
         else
         {
-            System.out.println("Ungültige Eingabe. Bitte überprüfe deine Eingabe, das Setup wird neugestartet.");
+            System.out.println("Ungültige Eingabe. Bitte überprüfe deine Eingabe, das Setup wird neugestartet...");
+            Thread.sleep(3000);
+            System.out.print('\f');
             start();
         }
     }
 
-    
-    public void AktionenAuswahl()
+    public void AktionenAuswahl() throws Exception
     {
         Scanner s = new Scanner(System.in);
+        System.out.println("----");
 
         System.out.println("Aktion auswählen:   ");
+        
         System.out.println("    spielen");
         System.out.println("    füttern");
         System.out.println("    waschen");
@@ -124,26 +139,32 @@ public class Spiel
         if(Eingabe.equals("spielen"))
         {
             spielen();
+            Thread.sleep(1500);
             AktionenAuswahl();
+            
         }
         else if(Eingabe.equals("füttern"))
         {
             füttern();
+            Thread.sleep(1500);
             AktionenAuswahl();
         }
         else if(Eingabe.equals("waschen"))
         {
             waschen();
+            Thread.sleep(1500);
             AktionenAuswahl();
         }
         else if(Eingabe.equals("Info"))
         {
             MitasuInfo();
+            Thread.sleep(1500);
             AktionenAuswahl();
         }
         else if(Eingabe.equals("speichern"))
         {
             speichern();
+            
         }
         else
         {
@@ -186,7 +207,7 @@ public class Spiel
     { 
         Scanner s = new Scanner(System.in);
         this.Mst = Mst;
-        
+
         if( Mst.istSchmutzigGeben() == true)
         {
             System.out.println( Mst.nameGeben()+" ist dreckig! Wasch es bevor sie es füttern!");
@@ -196,14 +217,14 @@ public class Spiel
         System.out.println("Was soll es essen?");
         int HW = Mst.HungerwertSetzen(NListe.EssenSuchen());
 
-        if(Mst.RNG() == true && Mst.istSchmutzigGeben() == false)
+        if(Mst.RNG(0.3) == true && Mst.istSchmutzigGeben() == false)
         {
             System.out.println("Oh Nein! "+Mst.nameGeben()+" ist dreckig geworden!");
             Mst.istSchmutzigSetzen(true);
         }
 
         Mst.erfahrungAddieren(1);
-        System.out.println("Hungmsterlevel ist nun auf "+HW);
+        System.out.println("Hungerlevel ist nun auf "+HW);
         System.out.println("----");
 
     }
@@ -222,13 +243,25 @@ public class Spiel
             return;
 
         }
-        else if(Mst.RNG() == true && Mst.istSchmutzigGeben() == false)
+        else if(Mst.HungerwertGeben() <= 0)
+        {
+            System.out.println(Mst.nameGeben()+" hat Hunger! Füttern sie es bevor sie mit ihm spielen!");
+        }
+        else if(Mst.RNG(0.42) == true && Mst.istSchmutzigGeben() == false)
         {
             System.out.println("Oh Nein! "+Mst.nameGeben()+" ist dreckig geworden.");
             Mst.istSchmutzigSetzen(true);
         }
         Mst.FreudenwertSetzen(3);
         Mst.erfahrungAddieren(2);
+        if(Mst.RNG(0.3) == true)
+        {
+            Mst.Hungerbekommen(3);
+        }
+        else
+        {
+            Mst.Hungerbekommen(2);
+        }
         System.out.println("----");
     }
 
@@ -237,7 +270,6 @@ public class Spiel
         System.out.println("Dein Spielstand wird nun gespeichert. Dazu wird dir ein Schlüssel ausgegeben, welchen du bitte auf deinem Rechner speicherst.");
         System.out.println(schluesselerstellen());
     }
-
 
     private String schluesselerstellen()
     {

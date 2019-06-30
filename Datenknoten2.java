@@ -35,9 +35,7 @@ public class Datenknoten2 extends Baumelement
     {
         inhalt.datenAusgeben();
         naechsterL.PreOrderAusgabe();
-        naechsterR.PreOrderAusgabe();
-        
-        
+        naechsterR.PreOrderAusgabe();        
     }
     public void InOrderAusgabe()
     {
@@ -52,18 +50,19 @@ public class Datenknoten2 extends Baumelement
         inhalt.datenAusgeben();
     }
     
-    public Baumelement einfuegen(Nahrung d)
+    public Baumelement einfuegen(Nahrung neu)
     {
-        if(d.istKleiner(inhalt))
+        if(neu.istKleiner(inhalt))
         {
-            naechsterL = naechsterL.einfuegen(d);
+            naechsterL = naechsterL.einfuegen(neu);
         }
         else
         {
-            naechsterR = naechsterR.einfuegen(d);
+            naechsterR = naechsterR.einfuegen(neu);
         }
         return this;
     }
+    
     public Nahrung suche(Nahrung d)
     {
         if(d.istGleich(inhalt) == true)
@@ -72,10 +71,9 @@ public class Datenknoten2 extends Baumelement
         }
         else
         {
-            if(d.istKleiner(inhalt)==true)
+            if(d.istKleiner(inhalt) == true)
             {
-                return naechsterL.suche(d);
-                
+                return naechsterL.suche(d);                
             }
             else
             {

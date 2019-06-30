@@ -1,19 +1,17 @@
 
 public class Nahrung 
 {
-    private int IndexN;
     private String bezeichnung;
     //private int preis;
     private int nährwert;
     private int anzahl;
     
-    public Nahrung(int ID, String name, int nährwert)
-    {
-        IndexN = ID;
+    public Nahrung( String name, int nährwert)
+    {        
         bezeichnung = name;
         //this.preis = preis;
         this.nährwert = nährwert;
-        anzahl = 3;
+        anzahl = 5;
     }
     
     public String datenwertGeben()
@@ -33,15 +31,15 @@ public class Nahrung
     
     public void datenAusgeben()
     {
-        System.out.println(bezeichnung);
+        System.out.println(bezeichnung+", "+anzahl+" Stk. übrig");
 
     }
     
     
-    public boolean istKleiner(Nahrung d)
+ public boolean istKleiner(Nahrung dat)
     {
-        String vgl = (String)d.datenwertGeben();
-        if(vgl.compareTo(bezeichnung)> 1)
+        String vergl = (String) dat.datenwertGeben();
+        if(bezeichnung.compareTo(vergl) < 0)
         {
             return true;
         }
@@ -54,7 +52,7 @@ public class Nahrung
     public boolean istGleich(Nahrung d)
     {
         String vgl = (String)d.datenwertGeben();
-        return vgl.equals(this.datenwertGeben());
+        return bezeichnung.equals(vgl);
     }
 
 }

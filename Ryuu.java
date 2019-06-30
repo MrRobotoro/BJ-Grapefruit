@@ -11,7 +11,7 @@ public class Ryuu extends Misuta
     private int Freudenwert;
     private Nahrungsliste Nahrungsliste;
     private Random rand = new Random();
-    
+
     public Ryuu(String name)
     {
         Nahrungsliste = new Nahrungsliste();
@@ -38,9 +38,8 @@ public class Ryuu extends Misuta
 
     }
 
-    public void aufSterblichkeitPrüfen() 
+    public void aufSterblichkeitPrüfen() //Noch nicht in Spiel-Klasse, da noch keine Funktion
     {
-
         if(Hungerwert == 0 && Freudenwert != 0)
         {
             System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ hungrig ");
@@ -61,7 +60,7 @@ public class Ryuu extends Misuta
                 System.out.println("Deinem Ryuu scheint es sehr schlecht zu gehen, kümmere dich besser darum bevor es stirbt...");
                 return;
             }
-            else if(sterblich == true && Hungerwert == 0 && Freudenwert == 0 && istSchmutzig == true) //technisch gesehen garnicht möglich, weil durch spielen() wieder Freude bekommt
+            else if(sterblich == true && Hungerwert == 0 && Freudenwert == 0 && istSchmutzig == true) //technisch gesehen noch nicht möglich, weil durch spielen() wieder Freude entsteht
             {            
                 System.out.println(nameGeben()+" ist gestorben. Rip");
                 return;
@@ -126,10 +125,10 @@ public class Ryuu extends Misuta
         return istSchmutzig;
     }
 
-    public boolean RNG()
+    public boolean RNG(double P)
     {
         double x = Math.random();
-        if(x <= 0.55)
+        if(x <= P)
         {
             return false;
         }
@@ -140,7 +139,20 @@ public class Ryuu extends Misuta
 
     }
 
-    
+    public void Hungerbekommen(int a)
+    {
+        Hungerwert = Hungerwert - a;
+        if(Hungerwert>0)
+        {
+            System.out.println(nameGeben()+" hat wohl Hunger bekommen :P");
+        }
+        else 
+        {
+            System.out.println(nameGeben()+" stirbt vor Hunger, sie sollten ihn füttern");
+        }
+
+    }
+
     public void SauberSetzen()
     {
         if(istSchmutzigGeben() == true)
@@ -165,6 +177,7 @@ public class Ryuu extends Misuta
         {
             return Hungerwert = 5;
         }
+        a.AnzahlMinusEins();
         return hungerwert;
     }
 
@@ -182,5 +195,4 @@ public class Ryuu extends Misuta
         }
     }
 }
-
 
