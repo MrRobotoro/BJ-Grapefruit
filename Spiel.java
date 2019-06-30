@@ -5,6 +5,7 @@ public class Spiel
     private Misuta Mst;
     private Raum Standort;
 
+
     private boolean Schwierigkeit;
     private String vgl;
     private Nahrungsliste NListe;
@@ -15,15 +16,17 @@ public class Spiel
     
     
 
+    private Scanner s;
+    private Einstellungen einstellungen;
+
     public Spiel()
     {        
         System.out.print('\f');
 
 
-        Scanner s = new Scanner(System.in);
-
         s = new Scanner(System.in);
-        start(); //wenn man den code eingibt startet trzdm normal
+        einstellungen = new Einstellungen("Easy");
+        start();
 
         RListe = new RaumListe();
         NListe = new Nahrungsliste();
@@ -57,9 +60,9 @@ public class Spiel
             System.out.println("Wie soll es heißen? ");
             String name = s.next();
 
-
             s_name = name;
             s_spezies = "Ryuu";
+
 
             Mst = new Ryuu(name);
             System.out.println("----");
@@ -69,14 +72,18 @@ public class Spiel
             System.out.println("Glückwunsch, du hast ein Robu erhalten.");
             System.out.println("Wie soll es heißen? ");
             String name = s.next();
+            
             s_name = name;
             s_spezies = "Robu";
+            
             Mst = new Robu(name);
             System.out.println("----");
         }
         
         AktionenAuswahl();
     }
+    
+    
     
 
     public void start()
@@ -136,14 +143,14 @@ public class Spiel
             waschen();
             AktionenAuswahl();
         }
-        else if(Eingabe.equals("MitasuInfo"))
+        else if(Eingabe.equals("Info"))
         {
             MitasuInfo();
             AktionenAuswahl();
         }
         else if(Eingabe.equals("speichern"))
         {
-            //speichern();
+            speichern();
         }
         else
         {
@@ -151,6 +158,7 @@ public class Spiel
             AktionenAuswahl();
         }
     }
+    
 
     public void Schwierigkeitsgrad_festlegen()
     {
@@ -158,8 +166,8 @@ public class Spiel
         System.out.println("Schwierigkeitsgrad wählen: ");
         System.out.println("   ");
         System.out.println("Medium | Empfohlen für Spieler, die noch nebenbei ein Leben haben und Pflichten in der realen Welt erfüllen müssen");
-        System.out.println("Hard | Sie wollen die beste, intensivste Erfahrung und sich für immer an ein virtuelles Tier binden? Dann nur zu!");
-        System.out.println("      (Warnung: Bei diesem Schwierigkeitsgrad kann das Haustier bei Vernachlässigung sterben.)");
+        System.out.println("Hard   | Sie wollen die beste, intensivste Erfahrung und sich für immer an ein virtuelles Tier binden? Dann nur zu!");
+        System.out.println("        (Warnung: Bei diesem Schwierigkeitsgrad kann das Haustier bei Vernachlässigung sterben.)");
         String SG = s.next();
         if(SG.equals("Medium"))
         {
@@ -173,7 +181,7 @@ public class Spiel
         }
         else
         {
-            System.out.println("Keine verfügbare Schwierigkeit");
+            System.out.println("Nicht verfügbare Schwierigkeit");
             Schwierigkeitsgrad_festlegen();
         }
     }
@@ -181,8 +189,7 @@ public class Spiel
     public void MisutaWählen()
     {
         Scanner s = new Scanner(System.in);
-
-        System.out.println("Misuta eingeben: ");
+        
         String nam = s.next();
         if(nam.equals("Ryuu"))
         {            
@@ -254,26 +261,23 @@ public class Spiel
         Mst.erfahrungAddieren(2);
         System.out.println("----");
     }
-    /**
-     * public void speichern()
+  
+     public void speichern()
     {
         System.out.println("Dein Spielstand wird nun gespeichert. Dazu wird dir ein Schlüssel ausgegeben, welchen du bitte auf deinem Rechner speicherst.");
         System.out.println(schluesselerstellen());
     }
-     */
+ 
 
-    
-    
-    /**
-     * private String schluesselerstellen()
+
+    private String schluesselerstellen()
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
         String schwierigkeit = einstellungen.decodeSettings();
         return name+","+spezies+","+schwierigkeit;
     }
-     */
-    
+        
     
     private void schluesselentschluesseln(String schlüssel)
     {
@@ -288,6 +292,6 @@ public class Spiel
         s_name = name;
         s_spezies = spezies;
         //einstellungen.schwierigkeitsetup(schwierigkeit);
-
     }
+
 }
