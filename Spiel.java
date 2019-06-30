@@ -21,6 +21,7 @@ public class Spiel
         RListe = new RaumListe();
         NListe = new Nahrungsliste();
         einstellungen = new Einstellungen();
+        
         Standort = RListe.RaumWahl("Spielzimmer").datenwertGeben();
 
         System.out.print('\f');
@@ -320,8 +321,8 @@ public class Spiel
     {
         String name = Base64.getEncoder().withoutPadding().encodeToString(s_name.getBytes());
         String spezies = Base64.getEncoder().withoutPadding().encodeToString(s_spezies.getBytes());
-        String xp = Integer.toString(Mst.erfahrungGeben());
         String schwierigkeit = einstellungen.decodeSettings();
+        String xp = Integer.toString(Mst.erfahrungGeben());
         xp = Base64.getEncoder().withoutPadding().encodeToString(xp.getBytes());
 
 
@@ -418,7 +419,7 @@ public class Spiel
 
         String xp = new String(Base64.getDecoder().decode(teil4.getBytes()));
         int exp = Integer.valueOf(xp);
-        if(exp > 0)
+        if(exp < 0)
         {
             System.out.println("Du kannst leider nicht -XP haben, deine XP wurden wieder auf 0 zurückgesetzt.");
             Mst.xpsetzen(0);
