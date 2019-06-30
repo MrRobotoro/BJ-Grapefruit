@@ -7,14 +7,14 @@ public class Nahrungsliste
     {
         erster = new Abschluss2();
         
-        Nahrung Apfel = new Nahrung("Apfel",1);
-        Nahrung Burger = new Nahrung("Burger",3);
-        Nahrung Pommes = new Nahrung("Pommes",2);
+        Nahrung Apfel = new Nahrung(1,"Apfel",1);
+        Nahrung Burger = new Nahrung(2,"Burger",3);
+        Nahrung Pommes = new Nahrung(3,"Pommes",2);
         
         Datenknoten2 A = new Datenknoten2(Apfel,erster,erster);
         Datenknoten2 B = new Datenknoten2(Burger,erster,erster);
         Datenknoten2 C = new Datenknoten2(Pommes,A,B);
-        erster.PreOrderAusgabe();
+        
     }
     
     
@@ -27,7 +27,7 @@ public class Nahrungsliste
     {
         Scanner s = new Scanner(System.in);
         String bezeichnung = s.next();
-        Nahrung vgl = new Nahrung(bezeichnung,1);
+        Nahrung vgl = new Nahrung(1,bezeichnung,1);
         return erster.suche(vgl);
     }
 

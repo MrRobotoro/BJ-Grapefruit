@@ -1,13 +1,15 @@
 
 public class Nahrung 
 {
+    private int IndexN;
     private String bezeichnung;
     //private int preis;
     private int nährwert;
     private int anzahl;
     
-    public Nahrung(String name, int nährwert)
+    public Nahrung(int ID, String name, int nährwert)
     {
+        IndexN = ID;
         bezeichnung = name;
         //this.preis = preis;
         this.nährwert = nährwert;

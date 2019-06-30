@@ -7,13 +7,17 @@ public class RaumListe
   {
       erster = new Abschluss();
       
-      Raum Spielraum = new Spielzimmer("Spielzimmer");
-      Raum Garten = new Garten("Garten");
+      Raum Playroom = new Spielzimmer("Spielzimmer");
+      Raum Garden = new Garten("Garten");
       
-      erster.hintenAnfuegen(Spielraum);
-      erster.hintenAnfuegen(Garten);
+      erster.hintenAnfuegen(Playroom);
+      erster.hintenAnfuegen(Garden);
   }
   
+  public Listenelement ersterGeben()
+  {
+      return erster;
+    }
   public void RaumAnzahlGeben()
   {
       int RaumANZ = erster.anzahlDatenknotenGeben();
@@ -26,4 +30,8 @@ public class RaumListe
       erster.listenDatenAusgeben();
   }
   
+  public Raum RaumGeben()
+  {
+      return erster.naechsterGeben().inhaltGeben();
+  }
 }

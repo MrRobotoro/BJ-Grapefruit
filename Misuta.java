@@ -2,10 +2,13 @@ public abstract class Misuta
 {
     public abstract String nameGeben();
     public abstract void datenAusgeben();
-    public abstract void speichern();
     public abstract void FreudenwertSetzen(int Freude);
-    public abstract void HungerwertSetzen(Nahrung Nährwert);
+    public abstract int HungerwertSetzen(Nahrung Nährwert);
     public abstract int HungerwertGeben();
     public abstract boolean istSchmutzigGeben();
     public abstract void SauberSetzen();
+    public abstract void erfahrungAddieren(int a);
+    public abstract boolean RNG();
+    public abstract void istSchmutzigSetzen(boolean a);
+    public abstract void aufSterblichkeitPrüfen();
 }

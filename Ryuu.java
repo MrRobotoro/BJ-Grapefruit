@@ -35,26 +35,67 @@ public class Ryuu extends Misuta
 
     }
 
-    public int erfahrungAddieren(int Erfahrungswert)
+    public void aufSterblichkeitPrüfen() 
     {
-        return erfahrung = erfahrung + Erfahrungswert;
+
+        if(Hungerwert == 0 && Freudenwert != 0)
+        {
+            System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ hungrig ");
+            System.out.println("Dein Ryuu scheint hungrig zu sein, du solltest es besser füttern");
+            return;
+        }
+        else if(Hungerwert != 0 && Freudenwert == 0)
+        {
+            System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ  traurig ");
+            System.out.println("Dein Ryuu scheint traurig zu sein, du solltest mit ihm spielen");
+            return;
+        }
+        else if(Hungerwert == 0 && Freudenwert == 0)
+        {
+            if(sterblich == true)
+            { 
+                System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ  D:");
+                System.out.println("Deinem Ryuu scheint es sehr schlecht zu gehen, kümmere dich besser darum bevor es stirbt...");
+                return;
+            }
+            else if(sterblich == true && Hungerwert == 0 && Freudenwert == 0 && istSchmutzig == true) //technisch gesehen garnicht möglich, weil durch spielen() wieder Freude bekommt
+            {            
+                System.out.println(nameGeben()+" ist gestorben. Rip");
+                return;
+            }  
+            else if(sterblich == false)
+            {
+                System.out.println("*"+nameGeben()+"* (っ◔◡◔)っ  D:");
+                System.out.println("Deinem Ryuu scheint es sehr schlecht zu gehen, kümmere dich besser darum.");
+                return;
+            }
+        }
     }
 
-    public void speichern()
+    public void erfahrungAddieren(int Erfahrungswert)
     {
+        erfahrung = erfahrung + Erfahrungswert;
+        System.out.println("+"+Erfahrungswert+"xp");
     }
 
     public void datenAusgeben()
     {
-        System.out.print("name: "+name);
-        System.out.print("merkmal: "+merkmal);
-        System.out.print("Erfahrungspunkte: "+erfahrung);
+        System.out.println("Mitasu Info: ");
+        System.out.println("   Name: "+name);
+        System.out.println("   Besitzer: Du?");
+        System.out.println("   Art: "+merkmal);
+        System.out.println("   Erfahrungspunkte: "+erfahrung);
         System.out.println("----");
     }
 
     public int erfahrungGeben()
     {
         return erfahrung;
+    }
+
+    public void istSchmutzigSetzen(boolean a)
+    {
+        istSchmutzig = a;
     }
 
     public void Sterblichkeit_Setzen(boolean a)
@@ -81,17 +122,21 @@ public class Ryuu extends Misuta
     {
         return istSchmutzig;
     }
-    
-    public void DreckigRNG()
+
+    public boolean RNG()
     {
         double x = Math.random();
-        if(x <= 0.4)
+        if(x <= 0.55)
         {
-            System.out.println("Oh Nein! "+nameGeben()+" ist dreckig geworden");
-            istSchmutzig = true;
+            return false;
         }
-               
+        else
+        {
+            return true;
+        }
+
     }
+
     
     public void SauberSetzen()
     {
@@ -99,7 +144,8 @@ public class Ryuu extends Misuta
         {
             istSchmutzig = false;
             System.out.println(nameGeben()+" ist jetzt nicht mehr dreckig.");
-            FreudenwertSetzen(1);
+            erfahrungAddieren(1);
+
         }
         else
         {
@@ -108,17 +154,18 @@ public class Ryuu extends Misuta
 
     }
 
-    public void HungerwertSetzen(Nahrung a)
+    public int HungerwertSetzen(Nahrung a)
     {
         Hungerwert = Hungerwert + a.nährwertGeben();
         if(Hungerwert > 5)
         {
-            Hungerwert = 5;
+            return Hungerwert = 5;
         }
-        a.AnzahlMinusEins();
+        return Hungerwert;
+        
 
     }
-    
+
     public int HungerwertGeben()
     {
         return Hungerwert;
@@ -133,6 +180,5 @@ public class Ryuu extends Misuta
         }
     }
 }
-
 
 
