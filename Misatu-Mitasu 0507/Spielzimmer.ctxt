@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Spielzimmer
+comment1.params=bezeichnung
+comment1.target=Spielzimmer(java.lang.String)
+comment2.params=
+comment2.target=void\ datenAusgeben()
+comment3.params=
+comment3.target=java.lang.String\ datenwertGeben()
+comment4.params=d
+comment4.target=boolean\ istGleich(java.lang.String)
+numComments=5

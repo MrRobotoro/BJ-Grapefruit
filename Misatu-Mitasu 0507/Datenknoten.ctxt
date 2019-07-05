@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Datenknoten
+comment1.params=inhalt\ naechster
+comment1.target=Datenknoten(Raum,\ Listenelement)
+comment2.params=
+comment2.target=Listenelement\ naechsterGeben()
+comment3.params=
+comment3.target=Raum\ inhaltGeben()
+comment4.params=
+comment4.target=int\ anzahlDatenknotenGeben()
+comment5.params=name
+comment5.target=Raum\ RaumGeben(java.lang.String)
+comment6.params=bezeichnung
+comment6.target=Listenelement\ hintenAnfuegen(Raum)
+comment7.params=
+comment7.target=void\ listenDatenAusgeben()
+numComments=8

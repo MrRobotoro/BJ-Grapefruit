@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=RaumListe
+comment1.params=
+comment1.target=RaumListe()
+comment2.params=bezeichnung
+comment2.target=Raum\ RaumWahl(java.lang.String)
+comment3.params=
+comment3.target=Listenelement\ wurzelGeben()
+comment4.params=
+comment4.target=void\ RaumAnzahlGeben()
+comment5.params=
+comment5.target=void\ RaumlisteAusgeben()
+numComments=6

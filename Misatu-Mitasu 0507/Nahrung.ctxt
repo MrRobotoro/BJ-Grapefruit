@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Nahrung
+comment1.params=name\ n\u00E4hrwert
+comment1.target=Nahrung(java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ datenwertGeben()
+comment3.params=
+comment3.target=int\ AnzahlGeben()
+comment4.params=
+comment4.target=int\ AnzahlMinusEins()
+comment5.params=
+comment5.target=int\ n\u00E4hrwertGeben()
+comment6.params=
+comment6.target=void\ datenAusgeben()
+comment7.params=dat
+comment7.target=boolean\ istKleiner(Nahrung)
+comment8.params=d
+comment8.target=boolean\ istGleich(Nahrung)
+numComments=9

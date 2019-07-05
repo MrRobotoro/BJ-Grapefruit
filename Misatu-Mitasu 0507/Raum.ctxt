@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Raum
+comment1.params=
+comment1.target=void\ datenAusgeben()
+comment2.params=
+comment2.target=java.lang.String\ datenwertGeben()
+comment3.params=a
+comment3.target=boolean\ istGleich(java.lang.String)
+numComments=4

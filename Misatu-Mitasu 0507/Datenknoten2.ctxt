@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Datenknoten2
+comment1.params=inhalt\ naechsterL\ naechsterR
+comment1.target=Datenknoten2(Nahrung,\ Baumelement,\ Baumelement)
+comment10.params=d
+comment10.target=Nahrung\ suche(Nahrung)
+comment2.params=
+comment2.target=int\ anzahlDatenknotenGeben()
+comment3.params=
+comment3.target=Nahrung\ inhaltGeben()
+comment4.params=
+comment4.target=Baumelement\ naechsterLGeben()
+comment5.params=
+comment5.target=Baumelement\ naechsterRGeben()
+comment6.params=
+comment6.target=void\ PreOrderAusgabe()
+comment7.params=
+comment7.target=void\ InOrderAusgabe()
+comment8.params=
+comment8.target=void\ PostOrderAusgabe()
+comment9.params=neu
+comment9.target=Baumelement\ einfuegen(Nahrung)
+numComments=11

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Nahrungsliste
+comment1.params=
+comment1.target=Nahrungsliste()
+comment2.params=
+comment2.target=void\ InOrderAusgeben()
+comment3.params=
+comment3.target=Nahrung\ EssenSuchen()
+numComments=4
